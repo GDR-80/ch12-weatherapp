@@ -1,0 +1,253 @@
+@use "./Partials/generics";
+
+html {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: auto;
+  min-height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+
+header {
+  text-align: center;
+
+  h1 {
+    font-size: 3.5rem;
+    padding: 3rem 1rem 0 1rem;
+    color: #fff;
+  }
+}
+
+.rotating {
+  display: inline-block;
+  animation: rotating 1.5s linear infinite;
+  i {
+    font-size: 12rem;
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg) scale(1);
+    color: rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.8);
+    color: rgba(255, 255, 255, 0.85);
+  }
+  100% {
+    transform: rotate(360deg);
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+#currentWeather {
+  color: #fff;
+  text-align: center;
+}
+
+.locating {
+  font-size: 4rem;
+}
+
+.form_holder {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+
+  .btn {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-family: inherit;
+    font-size: 2rem;
+    padding: 0.4rem 2rem;
+    margin: 2rem 0;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(rgba(255, 255, 255, 0.25), 25%);
+    }
+  }
+}
+
+.container {
+  background-color: transparent;
+  max-width: 1400px;
+  margin: 0 auto;
+  // padding: 10rem 0rem;
+}
+
+input.city_input {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 5rem;
+  border: none;
+  outline: none;
+  text-align: center;
+  width: 90%;
+}
+
+.weather_card {
+  overflow: hidden;
+  margin: 0 auto 2rem auto;
+  width: 90%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2rem;
+  text-align: center;
+  .weather_title {
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  &-body {
+    display: flex;
+  }
+
+  .icon {
+    margin: 0;
+    span {
+      margin: 0 2rem;
+    }
+    i {
+      position: relative;
+      top: 0.5rem;
+      left: 0px;
+      font-size: 3rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+.current {
+  .weather_card-body {
+    align-items: center;
+    flex-direction: column;
+  }
+  .weather_temp {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+  }
+
+  .weather_description {
+    font-size: 3rem;
+    text-transform: capitalize;
+  }
+}
+
+.forecast_today,
+.forecast_daily {
+  .weather_card-body {
+    overflow-x: auto;
+    gap: 3.6rem;
+
+    .weather_temp {
+      font-size: 3rem;
+      margin-bottom: 0;
+    }
+
+    .day {
+      font-size: 1.8rem;
+    }
+    .weather_info {
+      min-width: 8rem;
+    }
+  }
+}
+
+footer {
+  padding: 3rem 1rem;
+  color: #fff;
+  text-align: center;
+
+  p {
+    margin: 0;
+
+    i {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.error {
+  font-size: 4.5rem;
+}
+
+@media screen and (min-width: 540px) {
+  .container {
+    .weather_card {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    h1 {
+      font-size: 6rem;
+    }
+    .form_holder {
+      .btn {
+        margin: 4rem 0;
+      }
+    }
+    input.city_input {
+      width: 40%;
+    }
+
+    .weather_card {
+      width: 80%;
+      margin: 0 auto 5rem auto;
+      &-body {
+        flex-direction: row;
+      }
+    }
+
+    .current {
+      .weather_card-body {
+        justify-content: space-around;
+      }
+
+      .weather_temp {
+        font-size: 8rem;
+      }
+    }
+
+    .forecast_today,
+    .forecast_daily {
+      .weather_card-body {
+        justify-content: space-around;
+      }
+
+      .weather_temp {
+        font-size: 3rem;
+        margin-bottom: 0;
+      }
+
+      .weather_info {
+        width: 20%;
+      }
+
+      .weather_description {
+        font-size: 1.8rem;
+        text-transform: capitalize;
+      }
+    }
+  }
+}

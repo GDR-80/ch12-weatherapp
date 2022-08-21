@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CH-12 WeatherApp</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
+      integrity="sha512-5PV92qsds/16vyYIJo3T/As4m2d8b6oWYfoqV+vtizRB6KhF1F9kYzWzQmsO6T3z3QG2Xdhrx7FQ+5R1LiQdUA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <script defer async type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header><h1>CH-12 WeatherApp</h1></header>
+      <div class="form_holder">
+        <form id="city">
+          <input
+            id="cityInput"
+            class="city_input"
+            type="text"
+            placeholder="Type in a place name"
+          />
+        </form>
+        <button id="btn" class="btn">Search place</button>
+      </div>
+      <div id="currentWeather"></div>
+      <div id="forecast"></div>
+      <div id="dailyForecast"></div>
+      </div>
+    </main>
+    <footer><p>CH-12 WeatherApp made by Garon<sup>&copy;</sup>  <span id="year"></span></p></footer>
+  </body>
+</html>
