@@ -10,7 +10,7 @@ I was tasked to create a simple weather application that gets data from an api a
 
 ---
 
-## What the app does
+## Project features
 
 The app uses geolocation to get a users current location and displays the weather for where they are. There is an input box where a user can search for a place; this then returns the weather for the location searched.
 
