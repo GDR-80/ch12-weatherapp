@@ -68,8 +68,7 @@ async function getWeatherByLocation(lat, lon) {
 
     updateCurrentWeather(current.data);
     updateTodayForecast(forecast.data);
-    const theProcessedData = processData(forecast.data);
-    updateDailyForecast(theProcessedData);
+    updateDailyForecast(processData(forecast.data));
   } catch (error) {
     errorData(error);
   }
@@ -87,8 +86,7 @@ async function getWeatherByPlaceName(place) {
 
     updateCurrentWeather(current.data);
     updateTodayForecast(forecast.data);
-    const theProcessedData = processData(forecast.data);
-    updateDailyForecast(theProcessedData);
+    updateDailyForecast(processData(forecast.data));
   } catch (error) {
     errorData(error);
   }

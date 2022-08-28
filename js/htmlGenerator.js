@@ -1,5 +1,3 @@
-import { weatherConditions } from "./config.js";
-
 const body = document.querySelector("body");
 const currentWeather = document.getElementById("currentWeather");
 const forecast = document.getElementById("forecast");
@@ -38,13 +36,14 @@ export function updateCurrentWeather(data) {
          timeStyle: "short",
        })}</small></p>
     </div>`;
+
   currentWeather.innerHTML = html;
   setBackground(data.weather[0].main, data.sys.sunrise, data.sys.sunset);
 }
 
 export function updateTodayForecast(data) {
   const todayForecast = data.list.slice(0, 6);
-  let html = todayForecast.map((mappedDay) => {
+  const html = todayForecast.map((mappedDay) => {
     return `<div class="weather_info">
                 <p>${new Date(mappedDay.dt * 1000).toLocaleTimeString([], {
                   timeStyle: "short",
@@ -97,6 +96,16 @@ export function updateDailyForecast(data) {
         <h2 class="weather_title">Daily Forecast</h2>
         <div class="weather_card-body">${html.join("")}<div>`;
 }
+
+const weatherConditions = {
+  Clear: `linear-gradient(180deg, #045de9 0%, #09c6f9 74%)`,
+  Clouds: `linear-gradient(180deg, #bdd4e7 0%, #8693ab 74%)`,
+  Drizzle: `linear-gradient(180deg, #5d4157, #a8caba)`,
+  Thunderstorm: `linear-gradient(180deg, #485563, #29323c)`,
+  Rain: `linear-gradient(180deg, #e6dada, #274046)`,
+  Haze: `linear-gradient(to top, #cc95c0, #dbd4b4, #7aa1d2)`,
+  Night: `linear-gradient(180deg, #2C5364, #203A43, #0F2027)`,
+};
 
 function setBackground(conditons, sunrise, sunset) {
   const now = Date.now();
