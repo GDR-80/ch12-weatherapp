@@ -10,18 +10,17 @@ const placeName = document.getElementById("cityInput");
 const btn = document.getElementById("btn");
 const currentWeather = document.getElementById("currentWeather");
 
+const success = (position) => {
+  const { latitude, longitude } = position.coords;
+  getWeatherByLocation(latitude, longitude);
+};
+
+const error = (error, insertionPoint = currentWeather) => {
+  console.log(error);
+  insertionPoint.innerHTML = "Unable to retrieve your location";
+};
+
 function getLocation() {
-  const success = (position) => {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    getWeatherByLocation(latitude, longitude);
-  };
-
-  const error = (error) => {
-    console.log(error);
-    currentWeather.innerHTML = "Unable to retrieve your location";
-  };
-
   const config = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 
   !navigator.geolocation
@@ -35,24 +34,27 @@ function getLocation() {
   }, 2000);
 }
 
-function getFormData() {
-  placeName.focus();
-  btn.addEventListener("click", (e) => {
+// function getFormData() {
+//   // placeName.focus();
+// }
+
+btn.addEventListener("click", (e) => {
+  console.log(placeName.value);
+  e.preventDefault();
+  getInputValue(placeName);
+});
+
+placeName.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
     e.preventDefault();
     getInputValue(placeName);
-  });
-
-  placeName.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      getInputValue(placeName);
-    }
-  });
-}
+  }
+});
 
 function getInputValue(placeName) {
   getWeatherByPlaceName(placeName.value.toLowerCase());
-  placeName.value = "";
+  // placeName.value = "";
+  document.forms["city"].reset();
   placeName.focus();
 }
 
@@ -93,4 +95,4 @@ async function getWeatherByPlaceName(place) {
 }
 
 getLocation();
-getFormData();
+// getFormData();

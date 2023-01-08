@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CH-12 WeatherApp</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-     <link
-      rel="shortcut icon"
-      href="favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,21 +27,28 @@
     <main class="container">
       <header><h1>CH-12 WeatherApp</h1></header>
       <div class="form_holder">
-        <form id="city">
+        <form id="city" name="city">
+          <label class="sr-only" for="cityInput">Type in a place name</label>
           <input
             id="cityInput"
+            name="cityInput"
             class="city_input"
-            type="text"
+            type="search"
+            autofocus
             placeholder="Type in a place name"
+            required
           />
+          <button id="btn" class="btn">Search place</button>
         </form>
-        <button id="btn" class="btn">Search place</button>
       </div>
       <div id="currentWeather"></div>
       <div id="forecast"></div>
       <div id="dailyForecast"></div>
-      </div>
     </main>
-    <footer><p>CH-12 WeatherApp made by Garon<sup>&copy;</sup>  <span id="year"></span></p></footer>
+    <footer>
+      <p>
+        CH-12 WeatherApp made by Garon<sup>&copy;</sup> <span id="year"></span>
+      </p>
+    </footer>
   </body>
 </html>
