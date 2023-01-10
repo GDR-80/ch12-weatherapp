@@ -38,8 +38,9 @@ function getLocation() {
 //   // placeName.focus();
 // }
 
-btn.addEventListener("click", (e) => {
-  console.log(placeName.value);
+const searchForm = document.forms["city"];
+
+searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   getInputValue(placeName);
 });
@@ -53,8 +54,7 @@ placeName.addEventListener("keypress", (e) => {
 
 function getInputValue(placeName) {
   getWeatherByPlaceName(placeName.value.toLowerCase());
-  // placeName.value = "";
-  document.forms["city"].reset();
+  searchForm.reset();
   placeName.focus();
 }
 
